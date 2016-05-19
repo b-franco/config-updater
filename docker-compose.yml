@@ -1,0 +1,13 @@
+app:
+    image: busybox
+    volumes:
+        - .:/var/www/
+        - /vendor
+    tty: true
+
+php:
+    image: yappabe/php:7.0
+    volumes_from:
+        - app
+    tty: true
+    working_dir: /var/www

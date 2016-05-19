@@ -1,0 +1,29 @@
+{
+    "name": "b-franco/config-updater",
+    "description": "A simple config/file updater.",
+    "authors": [
+        {
+            "name": "Brecht Franco",
+            "email": "brecht@yappa.be"
+        }
+    ],
+    "require": {
+        "symfony/options-resolver": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BFranco\\ConfigUpdater\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BFranco\\ConfigUpdater\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.3"
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
