@@ -11,3 +11,5 @@ before_install:
   - composer self-update
 
 install: composer update --prefer-source $COMPOSER_FLAGS
+
+script: "phpunit -c phpunit.xml.dist"
