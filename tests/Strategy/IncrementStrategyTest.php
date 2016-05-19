@@ -28,10 +28,11 @@ class IncrementStrategyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('v3-4', $incrementStrategy->updateValue('v1-2'));
     }
 
+    /**
+     * @expectedException InvalidArgumentException
+     */
     public function testException()
     {
-        $this->expectException("InvalidArgumentException");
-
         $incrementStrategy = new IncrementStrategy();
         $incrementStrategy->updateValue('test');
     }
