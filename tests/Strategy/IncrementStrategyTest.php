@@ -30,7 +30,7 @@ class IncrementStrategyTest extends \PHPUnit_Framework_TestCase
 
     public function testException()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException("InvalidArgumentException");
 
         $incrementStrategy = new IncrementStrategy();
         $incrementStrategy->updateValue('test');

@@ -10,6 +10,6 @@ php:
 before_install:
   - composer self-update
 
-install: composer update --prefer-source -o
+install: composer install -o
 
 script: "phpunit -c phpunit.xml.dist"
