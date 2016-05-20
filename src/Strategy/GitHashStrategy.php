@@ -13,8 +13,6 @@ class GitHashStrategy extends FileContentStrategy
         $this->options = $this->optionsResolver->resolve([
            'filePath' => sprintf('%s/.git/refs/heads/%s', $this->options['docroot'], $this->options['branch']),
         ]);
-        var_dump($this->options);
-        die;
     }
 
     protected function configureOptions(OptionsResolver $resolver)

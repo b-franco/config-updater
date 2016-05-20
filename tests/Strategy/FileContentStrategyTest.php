@@ -14,4 +14,13 @@ class FileContentStrategyTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('example', $fileContentStrategy->convert('whatever'));
     }
+
+    public function testFileNotFound()
+    {
+        $fileContentStrategy = new FileContentStrategy([
+            'filePath' => __DIR__ . '/example/someUnexistantFile.txt',
+        ]);
+
+        $this->assertEquals('whatever', $fileContentStrategy->convert('whatever'));
+    }
 }

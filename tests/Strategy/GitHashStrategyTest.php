@@ -6,12 +6,12 @@ use BFranco\ConfigUpdater\Strategy\GitHashStrategy;
 
 class GitHashStrategyTest extends \PHPUnit_Framework_TestCase
 {
-    public function testHashUpdate()
+    public function testHashNotFound()
     {
         $gitHashStrategy = new GitHashStrategy([
-            'docroot' => __DIR__,
+            'docroot' => __DIR__ . '/someUnexistantFile.test',
         ]);
 
-        $this->assertEquals('example', $gitHashStrategy->convert('whatever'));
+        $this->assertEquals('whatever', $gitHashStrategy->convert('whatever'));
     }
 }
