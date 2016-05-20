@@ -9,5 +9,5 @@ interface StrategyInterface
      *
      * @return mixed
      */
-    public function updateValue($value);
+    public function convert($value);
 }

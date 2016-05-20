@@ -3,7 +3,6 @@
 namespace BFranco\ConfigUpdater\Tests\Strategy;
 
 use BFranco\ConfigUpdater\Strategy\DateStrategy;
-use BFranco\ConfigUpdater\Strategy\IncrementStrategy;
 
 class DateStrategyTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +12,7 @@ class DateStrategyTest extends \PHPUnit_Framework_TestCase
             'date' => \DateTime::createFromFormat('Y-m-d', '2016-01-01'),
         ]);
 
-        $this->assertEquals('2016-01-01', $dateStrategy->updateValue('whatever'));
+        $this->assertEquals('2016-01-01', $dateStrategy->convert('whatever'));
     }
 
     public function testRegexDateUpdate()
@@ -23,6 +22,6 @@ class DateStrategyTest extends \PHPUnit_Framework_TestCase
             'date' => \DateTime::createFromFormat('Y-m-d', '2016-06-06'),
         ]);
 
-        $this->assertEquals('some-file-2016-06-06.yml', $dateStrategy->updateValue('some-file-2016-09-10.yml'));
+        $this->assertEquals('some-file-2016-06-06.yml', $dateStrategy->convert('some-file-2016-09-10.yml'));
     }
 }

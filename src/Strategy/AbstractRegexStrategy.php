@@ -16,10 +16,29 @@ abstract class AbstractRegexStrategy extends AbstractStrategy
         ]);
     }
 
+    /**
+     * @param mixed $value
+     *
+     * @return mixed
+     */
+    public function convert($value)
+    {
+        if ($this->options['regex']) {
+            return $this->updateWithRegex($value, $this->options['regex'], $this->options['regexCallback']);
+        }
+
+        return $this->convertValue($value);
+    }
+
     protected function updateWithRegex($value, $regex, $callback)
     {
         return preg_replace_callback($regex, $callback, $value);
     }
 
-    abstract protected function regexCallback($matches);
+    protected function regexCallback($matches)
+    {
+        return $this->convertValue(array_shift($matches));
+    }
+
+    abstract protected function convertValue($value);
 }

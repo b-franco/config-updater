@@ -12,9 +12,9 @@ class IncrementStrategyTest extends \PHPUnit_Framework_TestCase
             'incrementValue' => 2
         ]);
 
-        $this->assertEquals(3, $incrementStrategy->updateValue(1));
-        $this->assertEquals(2, $incrementStrategy->updateValue(0));
-        $this->assertEquals(3.5, $incrementStrategy->updateValue(1.5));
+        $this->assertEquals(3, $incrementStrategy->convert(1));
+        $this->assertEquals(2, $incrementStrategy->convert(0));
+        $this->assertEquals(3.5, $incrementStrategy->convert(1.5));
     }
 
     public function testRegexIncrement()
@@ -24,8 +24,8 @@ class IncrementStrategyTest extends \PHPUnit_Framework_TestCase
             'incrementValue' => 2
         ]);
 
-        $this->assertEquals('v3', $incrementStrategy->updateValue('v1'));
-        $this->assertEquals('v3-4', $incrementStrategy->updateValue('v1-2'));
+        $this->assertEquals('v3', $incrementStrategy->convert('v1'));
+        $this->assertEquals('v3-4', $incrementStrategy->convert('v1-2'));
     }
 
     /**
@@ -34,6 +34,6 @@ class IncrementStrategyTest extends \PHPUnit_Framework_TestCase
     public function testException()
     {
         $incrementStrategy = new IncrementStrategy();
-        $incrementStrategy->updateValue('test');
+        $incrementStrategy->convert('test');
     }
 }
