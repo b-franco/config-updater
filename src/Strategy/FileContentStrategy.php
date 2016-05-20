@@ -4,20 +4,23 @@ namespace BFranco\ConfigUpdater\Strategy;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DateStrategy extends AbstractRegexStrategy implements StrategyInterface
+class FileContentStrategy extends AbstractRegexStrategy implements StrategyInterface
 {
     protected function configureOptions(OptionsResolver $resolver)
     {
         parent::configureOptions($resolver);
 
         $resolver->setDefaults([
-            'format' => 'Y-m-d',
-            'date' => new \DateTime(),
+            'filePath' => false,
         ]);
     }
 
     protected function convertValue($value)
     {
-        return $this->options['date']->format($this->options['format']);
+        if (!file_exists($this->options['filePath'])) {
+            return $value;
+        }
+
+        return file_get_contents($this->options['filePath']);
     }
 }

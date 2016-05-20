@@ -13,10 +13,10 @@ abstract class AbstractStrategy
 
     public function __construct(array $options = array())
     {
-        $resolver = new OptionsResolver();
-        $this->configureOptions($resolver);
+        $this->optionsResolver = new OptionsResolver();
+        $this->configureOptions($this->optionsResolver);
 
-        $this->options = $resolver->resolve($options);
+        $this->options = $this->optionsResolver->resolve($options);
     }
 
     protected function configureOptions(OptionsResolver $resolver)
